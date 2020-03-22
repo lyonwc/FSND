@@ -181,3 +181,6 @@ Traceback (most recent call last):
   File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/csrf.py", line 128, in _get_config
     raise RuntimeError(message)
 RuntimeError: A secret key is required to use CSRF.
+2020-03-21 22:36:00,468 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-21 22:36:34,987 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-21 22:36:39,643 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
