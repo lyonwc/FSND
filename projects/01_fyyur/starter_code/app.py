@@ -106,8 +106,6 @@ def index():
 
 @app.route('/venues')
 def venues():
-  # TODO: replace with real venues data.
-  #       num_shows should be aggregated based on number of upcoming shows per venue.
   cities = db.session.query(Venue.city.distinct()).all()
   areaList = []
 
@@ -338,9 +336,6 @@ def create_artist_submission():
 
 @app.route('/shows')
 def shows():
-  # displays list of shows at /shows
-  # TODO: replace with real venues data.
-  #       num_shows should be aggregated based on number of upcoming shows per venue.
   data = db.session.query(Show).filter(Show.start_time>=datetime.today()).all()
   dataList = []
   for show in data:
@@ -363,14 +358,25 @@ def create_shows():
 
 @app.route('/shows/create', methods=['POST'])
 def create_show_submission():
-  # called to create new shows in the db, upon submitting new show listing form
-  # TODO: insert form data as a new Show record in the db, instead
-
-  # on successful db insert, flash success
-  flash('Show was successfully listed!')
-  # TODO: on unsuccessful db insert, flash an error instead.
-  # e.g., flash('An error occurred. Show could not be listed.')
-  # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
+  error=False
+  try:
+    show = Show(
+      artist_id = request.form['artist_id'],
+      venue_id = request.form['venue_id'],
+      start_time = request.form['start_time']
+    )
+    print(show)
+    db.session.add(show)
+    db.session.commit()
+    flash('Show was successfully listed!')
+  except:
+    error=True
+    db.session.rollback()
+  finally:
+    db.session.close()
+  if error:
+    flash('An error occurred. Show could not be listed.')
+  
   return render_template('pages/home.html')
 
 @app.errorhandler(404)
