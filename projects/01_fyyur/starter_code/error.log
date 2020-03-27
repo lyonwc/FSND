@@ -184,3 +184,186 @@ RuntimeError: A secret key is required to use CSRF.
 2020-03-21 22:36:00,468 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
 2020-03-21 22:36:34,987 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
 2020-03-21 22:36:39,643 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-21 23:20:42,489 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:520]
+2020-03-21 23:38:48,404 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:522]
+2020-03-22 00:08:37,308 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:09:06,972 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:09:11,334 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:12:26,495 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:16:26,438 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:16:53,336 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:18:17,359 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:18:34,102 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:526]
+2020-03-22 00:21:06,522 INFO: errors [in app.py:527]
+2020-03-22 00:23:26,517 INFO: errors [in app.py:527]
+2020-03-22 00:30:22,926 INFO: errors [in app.py:528]
+2020-03-22 00:30:26,912 ERROR: Exception on /artists/1 [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 369, in show_artist
+    data = list(filter(lambda d: d['id'] == artist_id, [data1, data2, data3]))[0]
+IndexError: list index out of range
+2020-03-22 13:31:41,369 ERROR: Exception on /artists/create [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 431, in create_artist_form
+    # TODO: on unsuccessful db insert, flash an error instead.
+  File "/home/lyon/.local/lib/python3.5/site-packages/wtforms/form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/form.py", line 157, in __init__
+    super(Form, self).__init__(*args, **kwargs)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "/home/lyon/.local/lib/python3.5/site-packages/wtforms/form.py", line 278, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/home/lyon/.local/lib/python3.5/site-packages/wtforms/form.py", line 132, in process
+    field.process(formdata)
+  File "/home/lyon/.local/lib/python3.5/site-packages/wtforms/csrf/core.py", line 43, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/csrf.py", line 141, in generate_csrf_token
+    token_key=self.meta.csrf_field_name
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/csrf.py", line 35, in generate_csrf
+    message='A secret key is required to use CSRF.'
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask_wtf/csrf.py", line 128, in _get_config
+    raise RuntimeError(message)
+RuntimeError: A secret key is required to use CSRF.
+2020-03-22 13:37:11,564 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-22 13:39:02,089 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-22 13:58:30,735 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:517]
+2020-03-22 14:25:38,195 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 109, in venues
+    #  ----------------------------------------------------------------
+TypeError: 'BaseQuery' object is not callable
+2020-03-22 14:25:40,158 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 109, in venues
+    #  ----------------------------------------------------------------
+TypeError: 'BaseQuery' object is not callable
+2020-03-22 14:26:06,498 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 109, in venues
+    #  ----------------------------------------------------------------
+TypeError: 'BaseQuery' object is not callable
+2020-03-22 14:26:34,585 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 109, in venues
+    #  ----------------------------------------------------------------
+TypeError: 'BaseQuery' object is not callable
+2020-03-22 14:26:57,030 INFO: errors [in app.py:534]
+2020-03-22 14:27:01,850 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 122, in venues
+    'state': Venue.query.filter_by(city=city[0]).first().state,
+AttributeError: 'NoneType' object has no attribute 'state'
+2020-03-22 14:27:21,729 ERROR: Exception on /venues [GET] [in /home/lyon/.local/lib/python3.5/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lyon/.local/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 122, in venues
+    'state': Venue.query.filter_by(city=city[0]).first().state,
+AttributeError: 'NoneType' object has no attribute 'state'
+2020-03-22 14:28:03,427 INFO: errors [in app.py:534]
+2020-03-22 14:36:57,852 INFO: errors [in app.py:535]
+2020-03-22 14:37:26,787 INFO: errors [in app.py:535]
+2020-03-22 14:37:43,116 INFO: errors [in app.py:535]
+2020-03-22 14:37:54,976 INFO: errors [in app.py:535]
+2020-03-22 14:42:49,811 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:535]
+2020-03-23 22:00:30,085 INFO: errors [in app.py:513]
+2020-03-23 22:05:42,535 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:513]
+2020-03-23 22:29:16,623 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:514]
+2020-03-23 23:13:24,786 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:494]
+2020-03-24 22:02:09,976 INFO: errors [in app.py:453]
+2020-03-24 22:09:58,335 INFO: errors [in /home/lyon/Documents/udacity/FSND/projects/01_fyyur/starter_code/app.py:454]
