@@ -49,8 +49,6 @@ class Venue(db.Model):
   image_link = db.Column(db.String(500))
   facebook_link = db.Column(db.String(120))
 
-  # TODO: implement any missing fields, as a database migration using Flask-Migrate
-
 class Artist(db.Model):
   __tablename__ = 'artists'
 
@@ -66,16 +64,13 @@ class Artist(db.Model):
   image_link = db.Column(db.String(500))
   facebook_link = db.Column(db.String(120))
 
-  # TODO: implement any missing fields, as a database migration using Flask-Migrate
-
-# TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 class Show(db.Model):
   __tablename__ = 'shows'
   id = db.Column(db.Integer, primary_key=True)
   artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'))
   venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'))
   start_time = db.Column(db.DateTime, nullable=False)
-  artist = db.relationship('Artist', backref=db.backref('venues', lazy=True)) #use passive_deletes=all here?
+  artist = db.relationship('Artist', backref=db.backref('venues', lazy=True)) 
   venue = db.relationship('Venue', backref=db.backref('artists', lazy=True))
 
 #----------------------------------------------------------------------------#
@@ -266,35 +261,58 @@ def edit_artist(artist_id):
 
 @app.route('/artists/<int:artist_id>/edit', methods=['POST'])
 def edit_artist_submission(artist_id):
-  # TODO: take values from the form submitted, and update existing
-  # artist record with ID <artist_id> using the new attributes
-
+  error=False
+  try:
+    artist = Artist.query.get(artist_id)
+    artist.name = request.form['name']
+    artist.city = request.form['city']
+    artist.state = request.form['state']
+    artist.phone = request.form['phone']
+    artist.genres = request.form.getlist('genres')
+    artist.facebook_link = request.form['facebook_link']
+    artist.is_seeking_venue = bool(request.form['is_seeking_venue'])
+    artist.seeking_venue_description = request.form['seeking_venue_description']
+    db.session.commit()
+    flash('Artist ' + request.form['name'] + ' was successfully updated!')
+  except:
+    error=True
+    db.session.rollback()
+  finally:
+    db.session.close()
+  if error:
+    flash('Artist ' + request.form['name'] + ' could not be updated.')
+  
   return redirect(url_for('show_artist', artist_id=artist_id))
 
 @app.route('/venues/<int:venue_id>/edit', methods=['GET'])
 def edit_venue(venue_id):
   form = VenueForm()
-  venue={
-    "id": 1,
-    "name": "The Musical Hop",
-    "genres": ["Jazz", "Reggae", "Swing", "Classical", "Folk"],
-    "address": "1015 Folsom Street",
-    "city": "San Francisco",
-    "state": "CA",
-    "phone": "123-123-1234",
-    "website": "https://www.themusicalhop.com",
-    "facebook_link": "https://www.facebook.com/TheMusicalHop",
-    "seeking_talent": True,
-    "seeking_description": "We are on the lookout for a local artist to play every two weeks. Please call us.",
-    "image_link": "https://images.unsplash.com/photo-1543900694-133f37abaaa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"
-  }
-  # TODO: populate form with values from venue with ID <venue_id>
+  venue = Venue.query.get(venue_id)
   return render_template('forms/edit_venue.html', form=form, venue=venue)
 
 @app.route('/venues/<int:venue_id>/edit', methods=['POST'])
 def edit_venue_submission(venue_id):
-  # TODO: take values from the form submitted, and update existing
-  # venue record with ID <venue_id> using the new attributes
+  error=False
+  try:
+    venue = Venue.query.get(venue_id)
+    venue.name = request.form['name']
+    venue.city = request.form['city']
+    venue.state = request.form['state']
+    venue.phone = request.form['phone']
+    venue.genres = request.form.getlist('genres')
+    venue.facebook_link = request.form['facebook_link']
+    venue.is_seeking_talent = bool(request.form['is_seeking_talent'])
+    venue.seeking_talent_description = request.form['seeking_talent_description']
+    venue.website = request.form['website']
+    db.session.commit()
+    flash('Venue ' + request.form['name'] + ' was successfully updated!')
+  except:
+    error=True
+    db.session.rollback()
+  finally:
+    db.session.close()
+  if error:
+    flash('Artist ' + request.form['name'] + ' could not be updated.')
   return redirect(url_for('show_venue', venue_id=venue_id))
 
 #  Create Artist
