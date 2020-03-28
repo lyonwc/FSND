@@ -171,6 +171,8 @@ def create_venue_submission():
       phone=request.form['phone'],
       genres=request.form.getlist('genres'),
       facebook_link=request.form['facebook_link'],
+      is_seeking_talent=bool(request.form['is_seeking_talent']),
+      seeking_talent_description=request.form['seeking_talent_description']
     )
     db.session.add(venue)
     db.session.commit()
@@ -182,8 +184,8 @@ def create_venue_submission():
     db.session.close()
   if error:
     flash('Venue ' + request.form['name'] + ' could not listed.')
-  else:
-    return render_template('pages/home.html')
+  
+  return render_template('pages/home.html')
 
 @app.route('/venues/<int:venue_id>', methods=['DELETE'])
 def delete_venue(venue_id):

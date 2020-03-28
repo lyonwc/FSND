@@ -36,6 +36,14 @@
           <label for="genres">Facebook Link</label>
           {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
         </div>
+      <div class="form-group">
+        <label for="is_seeking_talent">Seeking talent?</label>
+        {{ form.is_seeking_talent(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="seeking_venue_talent">Seeking Description</label>
+        {{ form.seeking_talent_description(class_ = 'form-control', placeholder='e.g. Looking for artists in the Bay Area!', autofocus = true) }}
+      </div>
       <input type="submit" value="Create Venue" class="btn btn-primary btn-lg btn-block">
     </form>
   </div>
